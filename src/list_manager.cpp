@@ -6,7 +6,6 @@ using namespace std;
 string lista[MAX_SIZE]; // A tömb deklarálása
 int elemekSzama = 0;    // A jelenlegi elemek száma a listában
 
-// Elem hozzáadása a listához
 void hozzaadElem(const string& elem) {
     if (elemekSzama < MAX_SIZE) {
         lista[elemekSzama] = elem; // Az új elem hozzáadása a következő szabad helyre
