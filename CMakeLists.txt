@@ -13,7 +13,7 @@ add_library(list_manager
 )
 
 # Add executable for the main application
-add_executable(main main.cpp)
+add_executable(main src/main.cpp)
 target_link_libraries(main PRIVATE list_manager)
 
 # Add test executable
