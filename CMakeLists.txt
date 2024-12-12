@@ -16,10 +16,15 @@ add_library(list_manager
 add_executable(main src/main.cpp)
 target_link_libraries(main PRIVATE list_manager)
 
-# Add test executable
-enable_testing()
-add_executable(test_list_manager test/test_list_manager.cpp)
-target_link_libraries(test_list_manager PRIVATE list_manager)
+# Include AddCatch2.cmake from the cmake directory
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+include(AddCatch2)
 
-# Add test
-add_test(NAME ListManagerTests COMMAND test_list_manager)
+# Add test executable
+add_executable(test_list_manager test/test_list_manager.cpp)
+target_link_libraries(test_list_manager PRIVATE list_manager Catch2::Catch2WithMain)
+
+# Enable testing and register tests with Catch2
+enable_testing()
+include(Catch)
+catch_discover_tests(test_list_manager)
